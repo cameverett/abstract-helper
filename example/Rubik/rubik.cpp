@@ -27,7 +27,7 @@ int main( int argc, char* argv[])
     printCycleNotation( result);
     std::cout << std::endl;
 
-    std::cout << "\nResult represented as a product of transformations:" << std::endl;
+    std::cout << "\nResult represented as a product of transpositions:" << std::endl;
     printProductOfTrans( result);
     std::cout << std::endl;
     
