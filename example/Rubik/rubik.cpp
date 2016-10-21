@@ -6,9 +6,9 @@ int main( int argc, char* argv[])
 {
     std::unique_ptr<composition> fns = std::make_unique<composition>();
 
-    auto bag = *readPermutations( "rubik.in");
-    std::cout << "Finished reading " << bag.size() << " permutations." << std::endl;
-    for( auto& p : bag)
+    auto cube_moves = *readPermutations( "rubik.in");
+    std::cout << "Finished reading " << cube_moves.size() << " permutations." << std::endl;
+    for( auto& p : cube_moves)
     {
         std::cout << p.first << ": ";
         printCycleNotation( p.second);
@@ -16,8 +16,8 @@ int main( int argc, char* argv[])
     }
 
     std::cout << "\nCreate a series of moves (composition of functions): " << std::endl;
-    fns->push_back( bag.at( "U"));
-    fns->push_back( bag.at( "L"));
+    fns->push_back( cube_moves.at( "U"));
+    fns->push_back( cube_moves.at( "L"));
     printCOF( *fns);
 
     // Return resulting permutation from composition of functions
