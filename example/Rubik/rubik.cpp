@@ -16,8 +16,8 @@ int main( int argc, char* argv[])
     }
 
     std::cout << "\nCreate a series of moves (composition of functions): " << std::endl;
-    fns->push_back( bag.at( "top"));
-    fns->push_back( bag.at( "left"));
+    fns->push_back( bag.at( "U"));
+    fns->push_back( bag.at( "L"));
     printCOF( *fns);
 
     // Return resulting permutation from composition of functions
