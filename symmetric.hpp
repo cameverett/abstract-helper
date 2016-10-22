@@ -15,9 +15,13 @@
 #include <unordered_set>
 
 // TODO: Rethink how to track remaining elements. Loading a set with all elements could be a space hog with for permutations.
-namespace Permutation {
+// TODO: Parity function
+// TODO: Add usage and comment functions
+namespace Permutation
+{
     
-    namespace utility {
+    namespace utility
+    {
         size_t gcd( size_t a, size_t b)
         {
             for (;;)
@@ -151,16 +155,16 @@ namespace Permutation {
         
         for( auto& element : keys)
         {
-            auto to = element;
+            auto destination = element;
             while( rit != permutations.rend())
             {
-                if( (*rit).count( to))
+                if( (*rit).count( destination))
                 {
-                    to = (*rit).at( to);
+                    destination = (*rit).at( destination);
                 }
                 ++rit;
             }
-            result->insert( movesToPair( element, to));
+            result->insert( movesToPair( element, destination));
             rit = permutations.rbegin();
         }
         
