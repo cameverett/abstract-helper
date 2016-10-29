@@ -15,7 +15,6 @@
 #include <unordered_set>
 
 // TODO: Rethink how to track remaining elements. Loading a set with all elements could be a space hog with for large permutations.
-// TODO: Parity function
 // TODO: Add usage and comment functions
 namespace Permutation
 {
