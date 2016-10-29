@@ -9,9 +9,14 @@ int main( int argc, char* argv[])
      * with the n named permutations in the input file. U,D,L,R,B,F
      * correspond to counterclockwise rotations of the 6 faces of the cube.
      */
-    auto cube_moves = *readPermutations( "rubik.in");
-    std::cout << "Finished reading " << cube_moves.size() << " permutations." << std::endl;
-    for( auto& p : cube_moves)
+    auto cube_moves = readPermutations( "rubik.in");
+    if( cube_moves == nullptr)
+    {
+        // If the file was not opened succesfully.
+        return 1;
+    }
+    std::cout << "Finished reading " << cube_moves->size() << " permutations." << std::endl;
+    for( auto& p : *cube_moves)
     {
         std::cout << p.first << ": ";
         printCycleNotation( p.second);
@@ -22,8 +27,8 @@ int main( int argc, char* argv[])
     composition fns;
 
     // Clockwise turn of left face followed by clockwise turn on top face.
-    fns.push_front( cube_moves.at( "U"));
-    fns.push_front( cube_moves.at( "L"));
+    fns.push_front( cube_moves->at( "U"));
+    fns.push_front( cube_moves->at( "L"));
 
     // Printed as composition of functions U ∘ L
     printCOF( fns);
