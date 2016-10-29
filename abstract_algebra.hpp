@@ -1,5 +1,5 @@
-#ifndef SYMMETRIC_HPP
-#define SYMMETRIC_HPP
+#ifndef ABSTRACT_ALGEBRA_HPP
+#define ABSTRACT_ALGEBRA_HPP
 
 #include <algorithm>
 #include <forward_list>
