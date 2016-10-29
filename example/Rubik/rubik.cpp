@@ -4,11 +4,11 @@ using namespace Permutation;
 
 int main( int argc, char* argv[])
 {
-    /*
+    /**
      * Populate an unordered_map<string, nPermutation>
      * with the n named permutations in the input file. U,D,L,R,B,F
      * correspond to counterclockwise rotations of the 6 faces of the cube.
-    */
+     */
     auto cube_moves = *readPermutations( "rubik.in");
     std::cout << "Finished reading " << cube_moves.size() << " permutations." << std::endl;
     for( auto& p : cube_moves)
