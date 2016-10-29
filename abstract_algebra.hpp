@@ -215,7 +215,7 @@ namespace Permutation
 
         if( !fin.is_open())
         {
-            std::cerr << filename << " was not opened properly. Please check if the filename is correct. The function will return 'nullptr'." << std::endl;
+            std::cerr << '\'' << filename << '\'' << " was not opened properly. Please check if the filename is correct. The function will return 'nullptr'." << std::endl;
             return nullptr;
         }
 
@@ -228,16 +228,16 @@ namespace Permutation
         if( fin.good())
         {
             size_t first, second;
+            std::unique_ptr<nPermutation> perm = std::make_unique<nPermutation>();
             for(; totalPermutations > 0; --totalPermutations)
             {
-                std::unique_ptr<nPermutation> perm = std::make_unique<nPermutation>();
                 fin >> key;
                 while( fin >> first >> second)
                 {
                     perm->insert( movesToPair( first, second));
                 }
-
-                hash_bag->insert( std::make_pair(key, *(perm.release())));
+                hash_bag->insert( std::make_pair( key, *perm));
+                perm.reset( new nPermutation);
                 fin.clear();
             }
         }
