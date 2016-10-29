@@ -54,9 +54,8 @@ namespace Permutation
     {
         for( auto &it : permutation)
         {
-            std::cout << it.first << " -> " << it.second << std::endl;
+            printf( "%zu -> %zu\n", it.first, it.second);
         }
-        std::cout.flush();
     }
     
     inline bool isIdentity( nPermutation &permutation)
@@ -75,7 +74,7 @@ namespace Permutation
     {
         if( isIdentity(permutation))
         {
-            std::cout << "( 1 ) ";
+            printf( "( 1 ) ");
             return;
         }
 
@@ -96,19 +95,18 @@ namespace Permutation
                 continue;
             }
 
-            std::cout << "( " << begin;
+            printf( "( %zu", begin);
             
             while(  destination != begin )
             {
-                std::cout << ' ' << destination;
+                printf( " %zu", destination);
                 remaining.erase( destination);
                 destination = permutation.at( destination);
             }
 
-            std::cout << " ) ";
+            printf( " ) ");
             
         }            
-        std::cout.flush();
     }
     
     void printCOF(composition& permutations)
@@ -127,11 +125,10 @@ namespace Permutation
                 continue;
             }
 
-            std::cout <<  " ∘ ";
+            printf(" ∘ ");
             printCycleNotation( *(it++));
         }
         
-        std::cout.flush();
     }
     
     std::unique_ptr<nPermutation> compose( composition& permutations)
@@ -149,8 +146,6 @@ namespace Permutation
             }
         }
         
-        std::cout.flush();
-
         rit = permutations.rbegin();
         
         for( auto& element : keys)
@@ -276,7 +271,7 @@ namespace Permutation
 
             while( !inCycle.empty())
             {
-                std::cout << "( " << begin << ' ' << inCycle.top() << " ) ";
+                printf( "( %zu %zu ) ", begin, inCycle.top());
                 inCycle.pop();
             }
         }
