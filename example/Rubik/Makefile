@@ -1,10 +1,10 @@
 CC=g++
 CFLAGS=-std=c++14 -O2 -Wall -Werror -pedantic
 
-run: rubik.out
+run: build
 	./rubik.out
 	
-rubik.out:
+build:
 	$(CC) $(CFLAGS) rubik.cpp -o rubik.out
 
 clean:
