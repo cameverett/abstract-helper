@@ -22,8 +22,8 @@ int main( int argc, char* argv[])
     composition fns;
 
     // Clockwise turn of left face followed by clockwise turn on top face.
-    fns.push_back( cube_moves.at( "U"));
-    fns.push_back( cube_moves.at( "L"));
+    fns.push_front( cube_moves.at( "U"));
+    fns.push_front( cube_moves.at( "L"));
 
     // Printed as composition of functions U ∘ L
     printCOF( fns);
@@ -41,7 +41,8 @@ int main( int argc, char* argv[])
     printCycleNotation( *inverse( result));
     std::cout << std::endl;
 
-    std::cout << "\nIs even: " << isEven( result) << std::endl;
+    std::cout << "\nIs even: " << (isEven( result) ? "True" : "False") << std::endl;
     std::cout << "The order of the result is " << order( result) << '.' << std::endl;
+
     return 0;
 }
