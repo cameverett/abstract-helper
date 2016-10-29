@@ -267,11 +267,7 @@ namespace Permutation
             remaining.erase( begin);
             
             auto destination = permutation.at( begin);
-            if( destination == begin)
-            {
-                continue;
-            }
-            while(  destination != begin )
+            while( destination != begin )
             {
                 inCycle.push(destination);
                 remaining.erase( destination);
