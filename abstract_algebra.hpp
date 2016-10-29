@@ -108,7 +108,7 @@ namespace Permutation
         }            
     }
     
-    void printCOF(composition& permutations)
+    void printCOF( composition& permutations)
     {
         composition::iterator it = permutations.begin();
         if( it == permutations.end())
