@@ -4,8 +4,11 @@ using namespace Permutation;
 
 int main( int argc, char* argv[])
 {
-    std::unique_ptr<composition> fns = std::make_unique<composition>();
-
+    /*
+     * Populate an unordered_map<string, nPermutation>
+     * with the n named permutations in the input file. U,D,L,R,B,F
+     * correspond to counterclockwise rotations of the 6 faces of the cube.
+    */
     auto cube_moves = *readPermutations( "rubik.in");
     std::cout << "Finished reading " << cube_moves.size() << " permutations." << std::endl;
     for( auto& p : cube_moves)
@@ -16,12 +19,15 @@ int main( int argc, char* argv[])
     }
 
     std::cout << "\nCreate a series of moves (composition of functions): " << std::endl;
-    fns->push_back( cube_moves.at( "U"));
-    fns->push_back( cube_moves.at( "L"));
-    printCOF( *fns);
+    composition fns;
 
-    // Return resulting permutation from composition of functions
-    auto result = *compose( *fns);
+    // Clockwise turn of left face followed by clockwise turn on top face.
+    fns.push_back( cube_moves.at( "U"));
+    fns.push_back( cube_moves.at( "L"));
+
+    // Printed as composition of functions U ∘ L
+    printCOF( fns);
+    auto result = *compose( fns);
 
     std::cout << "\nSee the result" << std::endl;
     printCycleNotation( result);
