@@ -6,10 +6,8 @@ int main()
 {
     auto cube_moves = *readPermutations( "../rubik.in");
 
-    std::cout << "------------------" << std::endl;
-
     // Upper case => clockwise U
-    // Lower case => counter-clockwise e.g. U'
+    // Lower case => counter-clockwise i.e. U'
     const std::string F2R("URurufUF");
 
     composition seriesOfMoves;
@@ -60,13 +58,13 @@ int main()
     }
 
 
-    std::cout << F2R << " Done as a composition of functions" << std::endl;
+    std::cout << '\n' << F2R << " Done as a composition of functions" << std::endl;
     printCOF( seriesOfMoves);
 
     std::cout << "\nResult: " << std::endl;
     auto done = *compose( seriesOfMoves);
     printCycleNotation( done);
-    std::cout << "\nOrder of the permutation is " << order( done) << std::endl;
+    std::cout << "\nOrder of the result is " << order( done) << std::endl;
 
     seriesOfMoves.clear();
     for( int i = 0; i < order(done); i++)
@@ -74,6 +72,8 @@ int main()
         seriesOfMoves.push_front( done);
     }
 
+    printCycleNotation( done);
+    std::cout << " repeated 15 times is ";
     printCycleNotation( *compose( seriesOfMoves));
 
     std::cout << std::endl;
