@@ -35,6 +35,8 @@ int main( int argc, char* argv[])
     printCycleNotation( *inverse( result));
     std::cout << std::endl;
 
+    std::cout << "Is even: " << isEven( result) << std::endl;
+
     
     std::cout << "\nThe order of the result is " << order( result) << '.' << std::endl;
 

@@ -286,6 +286,30 @@ namespace Permutation
         }
     }
 
+    bool isEven( nPermutation& permutation)
+    {
+        std::set<size_t> remaining;
+        for( auto&it : permutation)
+        {
+            remaining.insert( it.first);
+        }
+
+        size_t count = 0;
+        while( !remaining.empty())
+        {
+           size_t begin = *remaining.begin();
+           remaining.erase( begin);
+
+            auto destination = permutation.at( begin);
+            while( destination != begin)
+            {
+                count = (count+1) % 2;
+                remaining.erase( destination);
+                destination = permutation.at( destination);
+            }
+        }
+        return count ? 0 : 1;
+    }
 
 } // end of namespace Permutation
 
