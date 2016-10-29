@@ -1,4 +1,4 @@
-#include "../../symmetric.hpp"
+#include "../../abstract_algebra.hpp"
 
 using namespace Permutation;
 
