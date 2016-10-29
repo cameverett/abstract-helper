@@ -4,7 +4,11 @@ using namespace Permutation;
 
 int main()
 {
-    auto cube_moves = *readPermutations( "../rubik.in");
+    auto cube_moves = readPermutations( "../rubik.in");
+    if( !cube_moves)
+    {
+        return 1;
+    }
 
     // Upper case => clockwise U
     // Lower case => counter-clockwise i.e. U'
@@ -16,40 +20,40 @@ int main()
         switch(c)
         {
             case('U'):
-                seriesOfMoves.push_front( cube_moves.at("U"));
+                seriesOfMoves.push_front( cube_moves->at("U"));
                 break;
             case('u'):
-                seriesOfMoves.push_front( *inverse( cube_moves.at("U")));
+                seriesOfMoves.push_front( *inverse( cube_moves->at("U")));
                 break;
             case('D'):
-                seriesOfMoves.push_front( cube_moves.at("D"));
+                seriesOfMoves.push_front( cube_moves->at("D"));
                 break;
             case('d'):
-                seriesOfMoves.push_front( *inverse( cube_moves.at("D")));
+                seriesOfMoves.push_front( *inverse( cube_moves->at("D")));
                 break;
             case('L'):
-                seriesOfMoves.push_front( cube_moves.at("L"));
+                seriesOfMoves.push_front( cube_moves->at("L"));
                 break;
             case('l'):
-                seriesOfMoves.push_front( *inverse( cube_moves.at("L")));
+                seriesOfMoves.push_front( *inverse( cube_moves->at("L")));
                 break;
             case('R'):
-                seriesOfMoves.push_front( cube_moves.at("R"));
+                seriesOfMoves.push_front( cube_moves->at("R"));
                 break;
             case('r'):
-                seriesOfMoves.push_front( *inverse( cube_moves.at("R")));
+                seriesOfMoves.push_front( *inverse( cube_moves->at("R")));
                 break;
             case('F'):
-                seriesOfMoves.push_front( cube_moves.at("F"));
+                seriesOfMoves.push_front( cube_moves->at("F"));
                 break;
             case('f'):
-                seriesOfMoves.push_front( *inverse( cube_moves.at("F")));
+                seriesOfMoves.push_front( *inverse( cube_moves->at("F")));
                 break;
             case('B'):
-                seriesOfMoves.push_front( cube_moves.at("B"));
+                seriesOfMoves.push_front( cube_moves->at("B"));
                 break;
             case('b'):
-                seriesOfMoves.push_front( *inverse( cube_moves.at("B")));
+                seriesOfMoves.push_front( *inverse( cube_moves->at("B")));
                 break;
             default:
                 std::cout << "Ignoring invalid move " << c << std::endl;

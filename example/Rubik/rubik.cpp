@@ -10,7 +10,7 @@ int main( int argc, char* argv[])
      * correspond to counterclockwise rotations of the 6 faces of the cube.
      */
     auto cube_moves = readPermutations( "rubik.in");
-    if( cube_moves == nullptr)
+    if( !cube_moves)
     {
         // If the file was not opened succesfully.
         return 1;
