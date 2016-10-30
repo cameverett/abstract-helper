@@ -5,7 +5,7 @@ run: build
 	./faces.out
 	
 build:
-	$(CC) $(CFLAGS) facesg.cpp -o rubik.out
+	$(CC) $(CFLAGS) faces.cpp -o faces.out
 
 clean:
-	rm facesg.out
+	rm faces.out
