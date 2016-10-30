@@ -21,7 +21,7 @@ namespace Permutation
     
     namespace utility
     {
-        size_t gcd( size_t a, size_t b)
+        unsigned int gcd( unsigned int a, unsigned int b)
         {
             for (;;)
             {
@@ -38,22 +38,22 @@ namespace Permutation
             }
         }
 
-        size_t lcm( size_t a, size_t b)
+        unsigned int lcm( unsigned int a, unsigned int b)
         {
-            size_t temp = gcd( a, b);
+            unsigned int temp = gcd( a, b);
             return temp ? (a / temp * b) : 0;
         }
     }
     
-    typedef std::unordered_map<size_t, size_t> nPermutation;
+    typedef std::unordered_map<unsigned int, unsigned int> nPermutation;
     typedef std::list<nPermutation> composition;
-    typedef std::pair<size_t, size_t> movesToPair;
+    typedef std::pair<unsigned int, unsigned int> movesToPair;
     
     inline void printPermutation( nPermutation &permutation)
     {
         for( auto &it : permutation)
         {
-            printf( "%zu -> %zu\n", it.first, it.second);
+            printf( "%u -> %u\n", it.first, it.second);
         }
     }
     
@@ -77,7 +77,7 @@ namespace Permutation
             return;
         }
 
-        std::set<size_t> remaining;
+        std::set<unsigned int> remaining;
         for( auto &it : permutation)
         {
             remaining.insert( it.first);
@@ -94,11 +94,11 @@ namespace Permutation
                 continue;
             }
 
-            printf( "( %zu", begin);
+            printf( "( %u", begin);
             
             while(  destination != begin )
             {
-                printf( " %zu", destination);
+                printf( " %u", destination);
                 remaining.erase( destination);
                 destination = permutation.at( destination);
             }
@@ -135,7 +135,7 @@ namespace Permutation
         std::unique_ptr<nPermutation> result = std::make_unique<nPermutation>();
         composition::reverse_iterator rit = permutations.rbegin();
         
-        std::unordered_set<size_t> keys;
+        std::unordered_set<unsigned int> keys;
         
         for( ; rit != permutations.rend(); ++rit)
         {
@@ -175,15 +175,15 @@ namespace Permutation
         return inv;
     }
 
-    size_t order( nPermutation& permutation)
+    unsigned int order( nPermutation& permutation)
     {
-        std::set<size_t> remaining;
+        std::set<unsigned int> remaining;
         for( auto &it : permutation)
         {
             remaining.insert( it.first);
         }
         
-        std::forward_list<size_t> lengthsOfCycles;
+        std::forward_list<unsigned int> lengthsOfCycles;
         while( !remaining.empty())
         {
             auto begin = *(remaining.begin());
@@ -195,7 +195,7 @@ namespace Permutation
                 continue;
             }
 
-            size_t length = 1;
+            unsigned int length = 1;
             while(  destination != begin )
             {
                 remaining.erase( destination);
@@ -222,12 +222,12 @@ namespace Permutation
         std::unique_ptr<std::unordered_map<std::string,nPermutation>> hash_bag = std::make_unique<std::unordered_map<std::string,nPermutation>>();
 
         std::string key;
-        size_t totalPermutations = 0;
+        unsigned int totalPermutations = 0;
 
         fin >> totalPermutations;
         if( fin.good())
         {
-            size_t first, second;
+            unsigned int first, second;
             std::unique_ptr<nPermutation> perm = std::make_unique<nPermutation>();
             for(; totalPermutations > 0; --totalPermutations)
             {
@@ -247,7 +247,7 @@ namespace Permutation
 
     void printProductOfTrans( nPermutation& permutation)
     {
-        std::set<size_t> remaining;
+        std::set<unsigned int> remaining;
         for( auto&it : permutation)
         {
             remaining.insert( it.first);
@@ -255,9 +255,9 @@ namespace Permutation
 
         while( !remaining.empty())
         {
-            std::stack<size_t> inCycle;
+            std::stack<unsigned int> inCycle;
 
-            size_t begin = *remaining.begin();
+            unsigned int begin = *remaining.begin();
             remaining.erase( begin);
             
             auto destination = permutation.at( begin);
@@ -270,7 +270,7 @@ namespace Permutation
 
             while( !inCycle.empty())
             {
-                printf( "( %zu %zu ) ", begin, inCycle.top());
+                printf( "( %u %u ) ", begin, inCycle.top());
                 inCycle.pop();
             }
         }
@@ -278,16 +278,16 @@ namespace Permutation
 
     bool isEven( nPermutation& permutation)
     {
-        std::set<size_t> remaining;
+        std::set<unsigned int> remaining;
         for( auto&it : permutation)
         {
             remaining.insert( it.first);
         }
 
-        size_t count = 0;
+        unsigned int count = 0;
         while( !remaining.empty())
         {
-           size_t begin = *remaining.begin();
+           unsigned int begin = *remaining.begin();
            remaining.erase( begin);
 
             auto destination = permutation.at( begin);
